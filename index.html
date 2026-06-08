@@ -763,32 +763,11 @@
     </div>
 
     <script>
-      document.addEventListener("input", function (e) {
-        const el = e.target;
-
-        if (!el.classList.contains("uppercase-field")) return;
-
-        const selection = window.getSelection();
-        const range = selection.getRangeAt(0);
-        const cursorPos = range.startOffset;
-
-        const upperText = el.innerText.toUpperCase();
-
-        if (el.innerText !== upperText) {
-          el.innerText = upperText;
-
-          const newRange = document.createRange();
-          const textNode = el.firstChild;
-
-          if (textNode) {
-            newRange.setStart(textNode, Math.min(cursorPos, textNode.length));
-            newRange.collapse(true);
-
-            selection.removeAllRanges();
-            selection.addRange(newRange);
-          }
-        }
-      });
+       document.addEventListener("blur", function (e) {
+       if (e.target.classList.contains("uppercase-field")) {
+       e.target.innerText = e.target.innerText.toUpperCase();
+       }
+       }, true);
       const tbody = document.getElementById("rows");
       const rowCount = 7;
 
