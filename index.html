@@ -184,6 +184,7 @@
     }
     .editable {
       min-width: 36px;
+      text-transform: uppercase;
     }
     .w-60{width:60px}.w-80{width:80px}.w-100{width:100px}.w-120{width:120px}.w-140{width:140px}.w-180{width:180px}.w-220{width:220px}.w-260{width:260px}.w-300{width:300px}.w-440{width:440px}
     table {
@@ -423,7 +424,7 @@
 </head>
 <body>
   <div class="toolbar">
-    <div class="muted">Editable certificate form</div>
+    <div class="muted">EDoc for Gold Appaiser </div>
             <div>
         <button onclick="shareAsImage()">Share on WhatsApp</button>
         <button onclick="window.print()">Print / Save PDF</button>
@@ -553,7 +554,11 @@
   <script>
     const tbody = document.getElementById('rows');
     const rowCount = 7;
-
+    document.addEventListener("input", function (e) {
+    if (e.target.classList.contains("editable")) {
+    e.target.textContent = e.target.textContent.toUpperCase();
+    }
+    });
 
     function createRow(i) {
       const tr = document.createElement('tr');
